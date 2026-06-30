@@ -1,0 +1,386 @@
+/* =========================================
+   MONOSECURE — Global Design System
+   Matched to original Preview.zip source
+   ========================================= */
+
+:root {
+  /* Color Palette — exact match from original */
+  --ms-orange: #f5a623;
+  --ms-orange-hover: #ff8c00;
+  --ms-cream: #fff8ee;
+  --ms-ink: #0a0a0a;
+  --ms-ink-soft: #1a1a1a;
+  --ms-error: #e63946;
+  --ms-success: #2a9d8f;
+
+  /* Legacy aliases (for any component still using these) */
+  --color-amber: var(--ms-orange);
+  --color-amber-light: var(--ms-orange-hover);
+  --color-amber-dark: #d48e1a;
+  --color-black: var(--ms-ink);
+  --color-dark: var(--ms-ink-soft);
+  --color-cream: var(--ms-cream);
+  --color-cream-dark: #f0e8d8;
+  --color-white: #FFFFFF;
+  --color-text-muted: #888888;
+  --color-border: var(--ms-ink);
+
+  /* Typography */
+  --font-display: 'Alfa Slab One', serif;
+  --font-serif: 'Zilla Slab', serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Borders */
+  --border-width: 3px;
+  --border-width-thick: 5px;
+  --border-radius: 0px;
+
+  /* Shadows */
+  --shadow-card: 8px 8px 0px var(--ms-ink);
+  --shadow-card-hover: 2px 2px 0px var(--ms-ink);
+  --shadow-btn: 6px 6px 0px var(--ms-ink);
+  --shadow-btn-hover: 3px 3px 0px var(--ms-ink);
+}
+
+/* =========================================
+   CSS RESET & BASE
+   ========================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--ms-cream);
+  color: var(--ms-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Selection */
+::selection {
+  background: var(--ms-ink);
+  color: var(--ms-orange);
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-5);
+  }
+}
+
+/* =========================================
+   FONT HELPERS
+   ========================================= */
+.font-display {
+  font-family: 'Alfa Slab One', 'Zilla Slab', serif;
+  letter-spacing: -0.02em;
+}
+
+.font-slab {
+  font-family: 'Zilla Slab', 'Alfa Slab One', serif;
+}
+
+.font-sans-body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.text-display {
+  font-family: var(--font-display);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.text-serif {
+  font-family: var(--font-serif);
+}
+
+.text-sans {
+  font-family: var(--font-sans);
+}
+
+/* =========================================
+   BRUTALIST SHADOW UTILITIES
+   ========================================= */
+.shadow-brutal {
+  box-shadow: 8px 8px 0 0 var(--ms-ink);
+}
+
+.shadow-brutal-sm {
+  box-shadow: 4px 4px 0 0 var(--ms-ink);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 12px 12px 0 0 var(--ms-ink);
+}
+
+.shadow-brutal-orange {
+  box-shadow: 8px 8px 0 0 var(--ms-orange);
+}
+
+/* =========================================
+   WAVE PATTERN BACKGROUNDS
+   ========================================= */
+.bg-waves {
+  background-color: var(--ms-orange);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'><path d='M0 40 Q 50 0 100 40 T 200 40 T 300 40 T 400 40 T 500 40 T 600 40 T 700 40 T 800 40 T 900 40 T 1000 40 T 1100 40 T 1200 40' fill='none' stroke='%230a0a0a' stroke-width='4'/></svg>");
+  background-repeat: repeat;
+  background-size: 100% 80px;
+}
+
+.bg-waves-subtle {
+  background-color: var(--ms-cream);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'><path d='M0 40 Q 50 0 100 40 T 200 40 T 300 40 T 400 40 T 500 40 T 600 40 T 700 40 T 800 40 T 900 40 T 1000 40 T 1100 40 T 1200 40' fill='none' stroke='%230a0a0a' stroke-width='2' opacity='0.18'/></svg>");
+  background-repeat: repeat;
+  background-size: 100% 120px;
+}
+
+/* =========================================
+   BRUTALIST CARD HOVER
+   ========================================= */
+.brutal-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.brutal-card:hover {
+  transform: translate(6px, 6px);
+  box-shadow: 2px 2px 0 0 var(--ms-ink);
+}
+
+/* =========================================
+   FORM OVERRIDES — BRUTALIST
+   ========================================= */
+.brutal-input {
+  border-radius: 0 !important;
+  border: 2px solid var(--ms-ink) !important;
+  background: #fff !important;
+  height: 3.5rem !important;
+  font-size: 1.05rem !important;
+  padding: 0 1rem !important;
+  box-shadow: none !important;
+  transition: box-shadow 0.15s ease;
+  color: var(--ms-ink) !important;
+}
+
+.brutal-input:focus,
+.brutal-input:focus-visible {
+  outline: none !important;
+  box-shadow: 4px 4px 0 0 var(--ms-ink) !important;
+  border-color: var(--ms-ink) !important;
+}
+
+.brutal-textarea {
+  border-radius: 0 !important;
+  border: 2px solid var(--ms-ink) !important;
+  background: #fff !important;
+  font-size: 1.05rem !important;
+  padding: 0.85rem 1rem !important;
+  min-height: 160px;
+  box-shadow: none !important;
+  transition: box-shadow 0.15s ease;
+  color: var(--ms-ink) !important;
+}
+
+.brutal-textarea:focus,
+.brutal-textarea:focus-visible {
+  outline: none !important;
+  box-shadow: 4px 4px 0 0 var(--ms-ink) !important;
+}
+
+/* =========================================
+   BUTTON — BRUTALIST
+   ========================================= */
+.btn-brutal {
+  background: var(--ms-ink);
+  color: #fff;
+  border: 2px solid var(--ms-ink);
+  padding: 1rem 1.5rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 6px 6px 0 0 var(--ms-ink);
+}
+
+.btn-brutal:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 0 var(--ms-ink);
+  background: var(--ms-orange);
+  color: var(--ms-ink);
+}
+
+.btn-brutal:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 var(--ms-ink);
+}
+
+.btn-brutal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   UNDERLINE ANIMATED LINK
+   ========================================= */
+.ms-link {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ms-ink);
+  padding: 0.25rem 0;
+}
+
+.ms-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 4px;
+  width: 0;
+  background: var(--ms-ink);
+  transition: width 0.25s ease;
+}
+
+.ms-link:hover::after,
+.ms-link.active::after {
+  width: 100%;
+}
+
+/* =========================================
+   FOOTER WORDMARK
+   ========================================= */
+.footer-watermark {
+  font-family: 'Alfa Slab One', serif;
+  font-size: clamp(4rem, 16vw, 18rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--ms-orange);
+  word-break: break-word;
+}
+
+/* =========================================
+   MARQUEE
+   ========================================= */
+@keyframes ms-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* =========================================
+   HERO TYPOGRAPHY ENTRANCE
+   ========================================= */
+@keyframes ms-slide-up {
+  0% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.hero-rise {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hero-rise > span {
+  display: inline-block;
+  animation: ms-slide-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* =========================================
+   ANIMATIONS (legacy)
+   ========================================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ms-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ms-orange);
+  border-radius: 0;
+}

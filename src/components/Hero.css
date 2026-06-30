@@ -1,0 +1,197 @@
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(70px + var(--space-12)) var(--space-8) var(--space-16);
+  overflow: hidden;
+  /* Wave background via CSS — matches original .bg-waves */
+  background-color: var(--ms-orange);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'><path d='M0 40 Q 50 0 100 40 T 200 40 T 300 40 T 400 40 T 500 40 T 600 40 T 700 40 T 800 40 T 900 40 T 1000 40 T 1100 40 T 1200 40' fill='none' stroke='%230a0a0a' stroke-width='4'/></svg>");
+  background-repeat: repeat;
+  background-size: 100% 80px;
+}
+
+/* Content */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Badge */
+.hero__badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--ms-ink);
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--ms-ink);
+  padding: var(--space-3) var(--space-8);
+  margin-bottom: var(--space-8);
+  box-shadow: 6px 6px 0 0 var(--ms-ink);
+  opacity: 0;
+}
+
+/* Title */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 13rem);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: var(--ms-ink);
+  margin-bottom: var(--space-8);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__title-mono {
+  display: block;
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+  text-decoration-thickness: 0.05em;
+}
+
+.hero__title-secure {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Subtitle */
+.hero__subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: var(--ms-ink);
+  line-height: 1.6;
+  margin-bottom: var(--space-12);
+  opacity: 0;
+}
+
+/* Actions */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  opacity: 0;
+}
+
+/* Primary CTA — matches .btn-brutal from original */
+.hero__btn-primary {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: var(--ms-ink);
+  border: 2px solid var(--ms-ink);
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: 6px 6px 0 0 var(--ms-ink);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero__btn-primary:hover {
+  background-color: var(--ms-orange);
+  color: var(--ms-ink);
+  box-shadow: 3px 3px 0 0 var(--ms-ink);
+  transform: translate(3px, 3px);
+}
+
+.hero__btn-primary:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 0 var(--ms-ink);
+}
+
+.hero__btn-arrow {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.hero__btn-primary:hover .hero__btn-arrow {
+  transform: translateY(3px);
+}
+
+.hero__actions-separator {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ms-ink);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Text link button */
+.hero__btn-link {
+  position: relative;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ms-ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.hero__btn-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 4px;
+  width: 0;
+  background: var(--ms-ink);
+  transition: width 0.25s ease;
+}
+
+.hero__btn-link:hover::after {
+  width: 100%;
+}
+
+/* Animate-in class applied via JS */
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    padding: calc(70px + var(--space-8)) var(--space-5) var(--space-12);
+    min-height: auto;
+  }
+
+  .hero__title {
+    font-size: clamp(3.5rem, 18vw, 7rem);
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+}

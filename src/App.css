@@ -1,0 +1,14 @@
+/* =========================================
+   APP — Root Styles
+   ========================================= */
+
+/* Remove vite default styles */
+#root {
+  min-height: 100vh;
+  background: var(--ms-cream);
+}
+
+/* Smooth scroll offset for fixed navbar */
+[id] {
+  scroll-margin-top: 70px;
+}
