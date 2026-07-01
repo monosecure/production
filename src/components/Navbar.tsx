@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Zap } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -54,6 +55,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <button className="navbar__cta" onClick={() => scrollTo('contact')}>
+          <Zap size={13} strokeWidth={2.5} style={{ marginRight: 6, verticalAlign: 'middle' }} />
           START A PROJECT
         </button>
       </div>

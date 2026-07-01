@@ -92,6 +92,7 @@
   font-size: 1.2rem;
   flex-shrink: 0;
   border: 2px solid var(--ms-ink);
+  color: var(--ms-orange); /* icon color on black box = yellow */
 }
 
 .contact__info-label {
@@ -240,6 +241,16 @@ a.contact__info-value:hover {
   color: var(--ms-ink);
   box-shadow: 3px 3px 0 0 var(--ms-ink);
   transform: translate(3px, 3px);
+}
+
+/* Send icon yellow on black, black on orange hover */
+.contact__submit svg {
+  color: var(--ms-orange);
+  transition: color 0.15s ease;
+}
+
+.contact__submit:hover svg {
+  color: var(--ms-ink);
 }
 
 .contact__submit:active {

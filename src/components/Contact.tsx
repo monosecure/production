@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Mail, Phone, MapPin, CheckCircle, ArrowRight, Send } from 'lucide-react';
 import './Contact.css';
 
 const Contact: React.FC = () => {
@@ -41,35 +42,41 @@ const Contact: React.FC = () => {
 
           <div className="contact__info-cards">
             <div className="contact__info-card">
-              <div className="contact__info-icon">✉️</div>
+              <div className="contact__info-icon"><Mail size={20} strokeWidth={1.75} /></div>
               <div>
                 <div className="contact__info-label">EMAIL</div>
                 <a
                   href="mailto:hello@monosecure.studio"
                   className="contact__info-value"
                 >
-                  hello@monosecure.studio
+                  contact@monosecure.in
                 </a>
               </div>
             </div>
 
             <div className="contact__info-card">
-              <div className="contact__info-icon">📞</div>
+              <div className="contact__info-icon"><Phone size={20} strokeWidth={1.75} /></div>
               <div>
                 <div className="contact__info-label">PHONE</div>
-                <a href="tel:+15550102024" className="contact__info-value">
-                  +1 (555) 010-2024
+                <a href="tel:+919510519175" className="contact__info-value">
+                  +91 9510519175
                 </a>
               </div>
             </div>
 
-            <div className="contact__info-card">
-              <div className="contact__info-icon">📍</div>
+            <a
+              href="https://maps.app.goo.gl/9evgpDVfUw4L5fqf6"
+              target="_blank"
+              rel="noreferrer"
+              className="contact__info-card"
+              aria-label="Open studio location in Google Maps"
+            >
+              <div className="contact__info-icon"><MapPin size={20} strokeWidth={1.75} /></div>
               <div>
                 <div className="contact__info-label">STUDIO</div>
-                <span className="contact__info-value">Remote — operating worldwide</span>
+                <span className="contact__info-value">B-1/2, Shree Krishna Center, Netaji Rd, Mithakhali, Navrangpura, Ahmedabad, Gujarat 380009</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -83,14 +90,14 @@ const Contact: React.FC = () => {
 
             {submitted ? (
               <div className="contact__success">
-                <div className="contact__success-icon">✓</div>
+                <div className="contact__success-icon"><CheckCircle size={40} strokeWidth={1.5} /></div>
                 <h3>Message sent!</h3>
                 <p>We'll get back to you within one business day.</p>
                 <button
                   className="contact__success-reset"
                   onClick={() => setSubmitted(false)}
                 >
-                  Send another message →
+                  Send another message <ArrowRight size={14} strokeWidth={2} style={{ marginLeft: 4, verticalAlign: 'middle' }} />
                 </button>
               </div>
             ) : (
@@ -104,7 +111,7 @@ const Contact: React.FC = () => {
                     name="name"
                     type="text"
                     className="contact__form-input"
-                    placeholder="Jane Cooper"
+                    placeholder="[NAME]"
                     value={form.name}
                     onChange={handleChange}
                     required
@@ -120,7 +127,7 @@ const Contact: React.FC = () => {
                     name="email"
                     type="email"
                     className="contact__form-input"
-                    placeholder="jane@store.com"
+                    placeholder="[EMAIL_ADDRESS]"
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -136,7 +143,7 @@ const Contact: React.FC = () => {
                     name="subject"
                     type="text"
                     className="contact__form-input"
-                    placeholder="New Shopify build, replatform, etc."
+                    placeholder="[E-COMM BUILD, AUDITING, ETC]"
                     value={form.subject}
                     onChange={handleChange}
                     required
@@ -160,7 +167,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <button type="submit" className="contact__submit">
-                  SEND MESSAGE →
+                  SEND MESSAGE <Send size={15} strokeWidth={2} style={{ marginLeft: 6, verticalAlign: 'middle' }} />
                 </button>
               </form>
             )}

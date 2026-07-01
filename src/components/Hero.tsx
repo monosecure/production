@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { ChevronDown } from 'lucide-react';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -25,30 +26,22 @@ const Hero: React.FC = () => {
     <section id="home" className="hero" ref={heroRef}>
       {/* Waves are now rendered via CSS background-image, no DOM elements needed */}
 
-      <div className="hero__content">
-        <div className="hero__badge hero__animate">
-          A WEB DEVELOPMENT STUDIO · EST. 2026
-        </div>
+      <div className="hero__badge hero__badge--top hero__animate">
+        A WEB DEVELOPMENT STUDIO · EST. 2026
+      </div>
 
+      <div className="hero__content">
         <h1 className="hero__title hero__animate">
           <span className="hero__title-mono">Mono</span>
           <span className="hero__title-secure">Secure.</span>
         </h1>
 
-        <p className="hero__subtitle hero__animate">
-          We build bold, fast, conversion-focused e-commerce websites and digital<br />
-          storefronts. No fluff. No bloat. Just sharp craft.
-        </p>
+      </div>
 
-        <div className="hero__actions hero__animate">
-          <button className="hero__btn-primary" onClick={() => scrollTo('services')}>
-            SEE OUR SERVICES <span className="hero__btn-arrow">↓</span>
-          </button>
-          <span className="hero__actions-separator">OR</span>
-          <button className="hero__btn-link" onClick={() => scrollTo('contact')}>
-            GET IN TOUCH →
-          </button>
-        </div>
+      <div className="hero__actions hero__actions--bottom hero__animate">
+        <button className="hero__btn-primary" onClick={() => scrollTo('services')}>
+          SEE OUR SERVICES <ChevronDown size={16} strokeWidth={2.5} className="hero__btn-arrow" />
+        </button>
       </div>
     </section>
   );

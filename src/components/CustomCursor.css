@@ -1,0 +1,63 @@
+/* =========================================
+   CUSTOM CURSOR — dot only
+   =========================================
+   HOW TO MANIPULATE THE DOT
+   ─────────────────────────────────────────
+   --cursor-size        → diameter of the dot (px)
+   --cursor-speed       → transition duration for
+                          size changes on hover (s)
+   --cursor-hover-scale → how much it grows on
+                          interactive elements
+   ========================================= */
+
+:root {
+  --cursor-size: 18px;
+  --cursor-speed: 0.2s;
+  --cursor-hover-scale: 0.35s;
+}
+
+/* Hide system cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ---- The dot ---- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  margin-top: calc(var(--cursor-size) / -2);
+  margin-left: calc(var(--cursor-size) / -2);
+  border-radius: 50%;
+
+  z-index: 9999;
+  pointer-events: none;
+
+  will-change: transform, background-color;
+
+  background-color: #000000;
+
+  transition:
+    width var(--cursor-speed) ease,
+    height var(--cursor-speed) ease,
+    margin var(--cursor-speed) ease;
+}
+
+/* ---- Hover state (applied by JS via class) ---- */
+.cursor-dot--hover {
+  width: calc(var(--cursor-size) * var(--cursor-hover-scale));
+  height: calc(var(--cursor-size) * var(--cursor-hover-scale));
+  margin-top: calc(var(--cursor-size) * var(--cursor-hover-scale) / -2);
+  margin-left: calc(var(--cursor-size) * var(--cursor-hover-scale) / -2);
+
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  mix-blend-mode: difference;
+}
+/* ---- Touch devices — restore native cursor ---- */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot { display: none; }
+  *, *::before, *::after { cursor: auto !important; }
+}

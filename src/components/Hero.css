@@ -9,7 +9,6 @@
   justify-content: center;
   padding: calc(70px + var(--space-12)) var(--space-8) var(--space-16);
   overflow: hidden;
-  /* Wave background via CSS — matches original .bg-waves */
   background-color: var(--ms-orange);
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'><path d='M0 40 Q 50 0 100 40 T 200 40 T 300 40 T 400 40 T 500 40 T 600 40 T 700 40 T 800 40 T 900 40 T 1000 40 T 1100 40 T 1200 40' fill='none' stroke='%230a0a0a' stroke-width='4'/></svg>");
   background-repeat: repeat;
@@ -38,7 +37,21 @@
   padding: var(--space-3) var(--space-8);
   margin-bottom: var(--space-8);
   box-shadow: 6px 6px 0 0 var(--ms-ink);
-  opacity: 0;
+}
+
+/* Top-pinned badge variant */
+.hero__badge--top {
+  position: absolute;
+  top: calc(70px + var(--space-6));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.hero__badge--top.fade-in-up {
+  animation: fadeInUpCentered 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Title */
@@ -49,7 +62,6 @@
   letter-spacing: 0.02em;
   color: var(--ms-ink);
   margin-bottom: var(--space-8);
-  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,7 +89,6 @@
   color: var(--ms-ink);
   line-height: 1.6;
   margin-bottom: var(--space-12);
-  opacity: 0;
 }
 
 /* Actions */
@@ -87,7 +98,31 @@
   justify-content: center;
   gap: var(--space-5);
   flex-wrap: wrap;
-  opacity: 0;
+}
+
+/* Bottom-pinned button variant */
+.hero__actions--bottom {
+  position: absolute;
+  bottom: var(--space-10);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Override fade-in animation for the bottom variant to preserve translateX(-50%) */
+.hero__actions--bottom.fade-in-up {
+  animation: fadeInUpCentered 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUpCentered {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Primary CTA — matches .btn-brutal from original */
@@ -124,10 +159,17 @@
 .hero__btn-arrow {
   font-size: 1rem;
   transition: transform 0.3s ease;
+  color: var(--ms-orange); /* yellow icon on black button */
 }
 
 .hero__btn-primary:hover .hero__btn-arrow {
   transform: translateY(3px);
+  color: var(--ms-ink); /* black icon when button turns orange on hover */
+}
+
+/* Send/Arrow icon on the text link button inherits ink color — fine */
+.hero__btn-link svg {
+  color: var(--ms-ink);
 }
 
 .hero__actions-separator {
@@ -175,23 +217,74 @@
   animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Hide empty subtitle */
+.hero__subtitle:empty {
+  display: none;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero {
-    padding: calc(70px + var(--space-8)) var(--space-5) var(--space-12);
-    min-height: auto;
+    /* Full viewport height so absolute children have room */
+    min-height: 100svh;
+    padding: 0 var(--space-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Badge: pin just below the navbar */
+  .hero__badge--top {
+    position: absolute;
+    top: calc(70px + var(--space-4));
+    left: var(--space-5);
+    right: var(--space-5);
+    transform: none;
+    text-align: center;
+    white-space: normal;
+    margin-bottom: 0;
+  }
+
+  /* Badge animation: simple fade+slide (no translateX needed) */
+  .hero__badge--top.fade-in-up {
+    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Title: centred in the viewport */
+  .hero__content {
+    width: 100%;
   }
 
   .hero__title {
     font-size: clamp(3.5rem, 18vw, 7rem);
+    margin-bottom: 0;
   }
 
-  .hero__subtitle {
-    font-size: 0.95rem;
+  /* Actions: pin to the bottom of the hero */
+  .hero__actions--bottom {
+    position: absolute;
+    bottom: var(--space-10);
+    left: var(--space-5);
+    right: var(--space-5);
+    transform: none;
+    width: auto;
+    justify-content: center;
+  }
+
+  /* Actions animation: simple fade+slide */
+  .hero__actions--bottom.fade-in-up {
+    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .hero__actions {
     flex-direction: column;
-    gap: var(--space-5);
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+
+  .hero__btn-primary {
+    width: 100%;
+    justify-content: center;
   }
 }
+

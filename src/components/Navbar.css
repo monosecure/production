@@ -104,6 +104,18 @@
   box-shadow: 4px 4px 0 0 var(--ms-ink);
   transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Zap icon: yellow on black button background */
+.navbar__cta svg {
+  color: var(--ms-orange);
+  transition: color 0.15s ease;
+}
+
+.navbar__cta:hover svg {
+  color: var(--ms-ink);
 }
 
 .navbar__cta:hover {

@@ -131,10 +131,12 @@
   justify-content: center;
   font-size: 1.5rem;
   flex-shrink: 0;
+  color: var(--ms-orange); /* icon color on black box = yellow */
 }
 
 .service-card--dark .service-card__icon {
   background-color: var(--ms-orange);
+  color: var(--ms-ink); /* icon color on orange box = black */
 }
 
 .service-card__num {

@@ -1,11 +1,14 @@
 import React from 'react';
+import { ShoppingCart, Store, CreditCard, TrendingUp, Wrench, ShieldCheck, ArrowRight, Clock } from 'lucide-react';
 import './Services.css';
+
+type LucideIcon = React.FC<{ size?: number; strokeWidth?: number; className?: string }>;
 
 interface Service {
   id: string;
   num: string;
   tag: string;
-  icon: string;
+  Icon: LucideIcon;
   title: string;
   description: string;
   variant: 'amber' | 'dark' | 'light';
@@ -18,65 +21,66 @@ const services: Service[] = [
     id: 'ecommerce',
     num: '01',
     tag: 'FLAGSHIP',
-    icon: '🛒',
+    Icon: ShoppingCart,
     title: 'Custom E-Commerce',
     description:
       'End-to-end online stores tailored to your brand, products, and checkout flow. Built for speed and conversion.',
     variant: 'amber',
   },
   {
-    id: 'shopify',
+    id: 'web-development',
     num: '02',
     tag: 'PLATFORMS',
-    icon: '🏪',
-    title: 'Shopify · WooCommerce',
+    Icon: Store,
+    title: 'Web Development',
     description:
-      'Headless setups, theme development, and custom apps on Shopify and WooCommerce — without vendor lock-in.',
+      'Clean, performant websites and web apps built from scratch — pixel-perfect design to production-ready code.',
     variant: 'dark',
   },
   {
-    id: 'payments',
+    id: 'security-testing',
     num: '03',
-    tag: 'CHECKOUT',
-    icon: '💳',
-    title: 'Payment Integration',
+    tag: 'SECURITY',
+    Icon: CreditCard,
+    title: 'Security Testing Automation Tools',
     description:
-      'Stripe, Razorpay, PayPal, and regional gateways — integrated cleanly with proper webhooks and reconciliation.',
+      'Custom-built scripts and pipelines that run pen-test routines automatically — catch vulnerabilities before attackers do.',
     variant: 'light',
   },
   {
-    id: 'seo',
+    id: 'network-security',
     num: '04',
-    tag: 'GROWTH',
-    icon: '📈',
-    title: 'SEO & Performance',
+    tag: 'INFRASTRUCTURE',
+    Icon: TrendingUp,
+    title: 'Network Security Infrastructure',
     description:
-      "Core Web Vitals, on-page SEO, structured data, and a Lighthouse score we're not afraid to show in public.",
+      'Firewall config, VPN setup, intrusion detection, and hardened network architecture designed to hold under pressure.',
     variant: 'amber',
   },
   {
-    id: 'maintenance',
+    id: 'web-application-security',
     num: '05',
-    tag: 'RELIABILITY',
-    icon: '🔧',
-    title: 'Maintenance & Support',
+    tag: 'AUDITS',
+    Icon: Wrench,
+    title: 'Web Application Security Audit',
     description:
-      'Retainers for store owners — bug fixes, feature releases, uptime monitoring, and quarterly performance audits.',
+      'Deep-dive reviews of your web app — OWASP Top 10, auth flaws, injection risks, and a full remediation report.',
     variant: 'dark',
   },
   {
-    id: 'cybersecurity',
+    id: 'Saas',
     num: '06',
     tag: 'COMING SOON',
-    icon: '🛡️',
-    title: 'Cybersecurity',
+    Icon: ShieldCheck,
+    title: 'SaaS Development',
     description:
-      'Coming next year — store hardening, vulnerability audits, and PCI-aligned reviews. Built into the same studio.',
+      'Coming next year — full-stack SaaS products with auth, billing, multi-tenancy, and scalable cloud infrastructure.',
     variant: 'light',
     comingSoon: true,
     roadmap: 'ROADMAP · 2027',
   },
 ];
+
 
 const scrollTo = (id: string) => {
   const el = document.getElementById(id);
@@ -113,7 +117,7 @@ const Services: React.FC = () => {
             >
               <div className="service-card__header">
                 <div className="service-card__icon">
-                  <span>{service.icon}</span>
+                  <service.Icon size={22} strokeWidth={1.75} />
                 </div>
                 <span className="service-card__num">
                   {service.num} / {service.tag}
@@ -125,13 +129,16 @@ const Services: React.FC = () => {
 
               <div className="service-card__footer">
                 {service.comingSoon ? (
-                  <span className="service-card__roadmap">{service.roadmap}</span>
+                  <span className="service-card__roadmap">
+                    <Clock size={13} strokeWidth={2} style={{ marginRight: 5, verticalAlign: 'middle' }} />
+                    {service.roadmap}
+                  </span>
                 ) : (
                   <button
                     className="service-card__link"
                     onClick={() => scrollTo('contact')}
                   >
-                    DISCUSS A PROJECT →
+                    DISCUSS A PROJECT <ArrowRight size={14} strokeWidth={2} style={{ marginLeft: 4, verticalAlign: 'middle' }} />
                   </button>
                 )}
               </div>
